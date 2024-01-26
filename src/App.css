@@ -1,38 +1,166 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  --poppy: hsla(356, 74%, 52%, 1);
+  --cambridge-blue: hsla(132, 27%, 63%, 1);
+  --lemon-chiffon: hsla(58, 74%, 85%, 1);
+  --buff: hsla(27, 64%, 65%, 1);
+  --bistre: hsla(10, 31%, 19%, 1);
+  --off-white: hsla(45, 29%, 97%, 1);
+
+  --background-color: var(--off-white);
+  --accent-color: var(--cambridge-blue);
+  background-color: var(--background-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+  max-width: min(800px, 100% - 4rem);
+  margin-inline: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper header {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  border-radius: 5px;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background: var(--background-color);
+}
+button:focus,
+button:hover {
+  background: var(--accent-color);
+  color: var(--background-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.error-message {
+  border: 2px solid var(--buff);
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 5px;
+}
+
+form input {
+  display: block;
+  margin: .5rem 0 1rem 0;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 5px;
+  border: 2px solid var(--accent-color);
+  font-size: 1rem;
+}
+
+form label {
+  margin-left: 1rem;
+  display: block;
+  height: 0;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+form label::before,
+form label::after {
+  content: '';
+  position: absolute;
+  height: 1.65rem;
+  top: -.25rem;
+  left: -5px;
+  width: calc(100% + 10px);
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  background-color: white;
+  z-index: -1;
+}
+
+form button {
+  margin-right: 1rem;
+}
+form button[type=button] {
+  border-color: var(--background-color);
+}
+form button[type=button]:focus,
+form button[type=button]:hover {
+  border-color: var(--accent-color);
+}
+
+nav {
+  margin: 0;
+  padding-top: 0.5rem;
+  background-color: var(--accent-color);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+}
+
+nav a {
+  color: var(--background-color);
+  display: block;
+  --padding: 1rem;
+  padding: var(--padding);
+  text-decoration: none;
+  font-weight: bold;
+  --border-radius: 15px;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+nav a:hover::before,
+nav a:focus::before {
+  content: '';
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  border-radius: 0 0 100vw 0;
+  box-shadow: 5px 5px 0 5px var(--background-color);
+  background-color: var(--accent-color);
+  bottom: 0;
+  left: calc(var(--padding) * -1 + 1px);
+}
+nav a:hover::after,
+nav a:focus::after {
+  content: '';
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  border-radius: 0 0 0 100vw;
+  box-shadow: -5px 5px 0 5px var(--background-color);
+  background-color: var(--accent-color);
+  bottom: 0;
+  right: calc(var(--padding) * -1 + 1px);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  outline: none;
+}
+
+.game-container {
+  border: 2px solid var(--accent-color);
+  margin: 1rem 0;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  border-radius: 5px;
+}
+
+.game-container p,
+.game-container h2 {
+  margin: 0;
+  font-size: 1.5rem;
 }
