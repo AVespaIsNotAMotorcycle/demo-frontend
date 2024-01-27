@@ -5,11 +5,6 @@ import axios from 'axios';
 import { BACKEND_URL } from '../../constants';
 
 const GAMES_ENDPOINT = `${BACKEND_URL}/games`;
-const STATES = {
-  pending: 0,
-  error: 1,
-  success: 2,
-};
 
 function AddGameForm({
   visible,
@@ -75,6 +70,12 @@ function Game({ game }) {
     </div>
   );
 }
+Game.propTypes = {
+  game: propTypes.shape({
+    name: propTypes.string.isRequired,
+    numPlayers: propTypes.number.isRequired,
+  }).isRequired,
+};
 
 function gamesObjectToArray({ Data }) {
   const keys = Object.keys(Data);
