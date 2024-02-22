@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
+ 
 import { BACKEND_URL } from '../../constants';
 
 const GAMES_ENDPOINT = `${BACKEND_URL}/games`;
@@ -62,12 +63,14 @@ ErrorMessage.propTypes = {
 function Game({ game }) {
   const { name, numPlayers } = game;
   return (
-    <div className="game-container">
-      <h2>{name}</h2>
-      <p>
-        Players: {numPlayers}
-      </p>
-    </div>
+    <Link to={name}>
+      <div className="game-container">
+        <h2>{name}</h2>
+        <p>
+          Players: {numPlayers}
+        </p>
+      </div>
+    </Link>
   );
 }
 Game.propTypes = {
