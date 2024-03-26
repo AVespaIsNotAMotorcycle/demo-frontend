@@ -21,7 +21,8 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        // <Route path="" element={<Login />} />
+        // For a different home page, do:
+        // <Route index element={<Login />} />
         <Route path="games" element={<Games />} />
         <Route path="games/:name" element={<GamePage />} />
       </Routes>
