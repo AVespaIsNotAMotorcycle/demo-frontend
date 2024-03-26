@@ -21,6 +21,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
+        // <Route path="" element={<Login />} />
         <Route path="games" element={<Games />} />
         <Route path="games/:name" element={<GamePage />} />
       </Routes>
